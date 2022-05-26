@@ -1,0 +1,252 @@
+[
+  {
+    "Id": 0,
+    "Name": "阿里嘎嘎嘎嘎嘎嘎嘎多有限不负责任公司",
+    "WorkSituation": 90,
+    "TotalAsset": 1545485643468546,
+    "StaffScale": 51482,
+    "ManageWay": 3,
+    "QualificationThreshold": 4,
+    "SalarySchemes": [
+      {
+        "Qualification": 4,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 16000
+      },
+      {
+        "Qualification": 5,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 18000
+      },
+      {
+        "Qualification": 6,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 21000
+      },
+      {
+        "Qualification": 7,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 30000
+      }
+    ],
+    "WorkTimes": [
+      {
+        "Begin": "10:00:00",
+        "End": "12:00:00"
+      },
+      {
+        "Begin": "14:00:00",
+        "End": "18:00:00"
+      },
+      {
+        "Begin": "20:00:00",
+        "End": "22:00:00"
+      }
+    ],
+    "WeekEndMode": 0,
+    "Projects": [
+      {
+        "No": "001",
+        "Name": "集武服",
+        "Description": "阿里嘎多公司推出的不一定要过年才有的集武服活动，集齐五种武服就可以免费享受一次滴滴打人服务，我们将会派出一个身穿武服的习武之人前去为你助拳。要想更多地了解滴滴打人服务，立刻前往下载滴滴打人APPP吧。",
+        "EstimatedDays": 15,
+        "Bonus": 30000,
+        "Company": 0,
+        "Tasks": [
+          {
+            "No": "001-01",
+            "Description": "集武服后端接口开发",
+            "Language": 1,
+            "EstimatedTime": 60,
+            "Project": "001"
+          },
+          {
+            "No": "001-02",
+            "Description": "集武服前端页面开发",
+            "Language": 6,
+            "EstimatedTime": 60,
+            "Previous": "001-01",
+            "Project": "001"
+          }
+        ]
+      }
+    ],
+    "Author": "Venyo"
+  },
+  {
+    "Id": 1,
+    "Name": "咚方材负",
+    "WorkSituation": 80,
+    "TotalAsset": 84651684941,
+    "StaffScale": 6199,
+    "ManageWay": 1,
+    "QualificationThreshold": 1,
+    "SalarySchemes": [
+      {
+        "Qualification": 1,
+        "QuarterlyBonus": 0.5,
+        "AnnualBonus": 2,
+        "MonthlySalary": 8000
+      },
+      {
+        "Qualification": 2,
+        "QuarterlyBonus": 0.5,
+        "AnnualBonus": 2,
+        "MonthlySalary": 10000
+      },
+      {
+        "Qualification": 3,
+        "QuarterlyBonus": 0.5,
+        "AnnualBonus": 2,
+        "MonthlySalary": 10000
+      },
+      {
+        "Qualification": 4,
+        "QuarterlyBonus": 0.5,
+        "AnnualBonus": 2,
+        "MonthlySalary": 12000
+      },
+      {
+        "Qualification": 5,
+        "QuarterlyBonus": 0.5,
+        "AnnualBonus": 2,
+        "MonthlySalary": 13000
+      },
+      {
+        "Qualification": 6,
+        "QuarterlyBonus": 0.5,
+        "AnnualBonus": 2,
+        "MonthlySalary": 15000
+      }
+    ],
+    "WorkTimes": [
+      {
+        "Begin": "09:00:00",
+        "End": "11:30:00"
+      },
+      {
+        "Begin": "13:00:00",
+        "End": "18:00:00"
+      }
+    ],
+    "WeekEndMode": 0,
+    "Projects": [
+      {
+        "No": "001",
+        "Name": "兲兲鸡精",
+        "Description": "鸡精超市，上百种不同厂家生产的鸡精，任意选购，链接人与美味。",
+        "EstimatedDays": 30,
+        "Bonus": 30000,
+        "Company": 1,
+        "Tasks": [
+          {
+            "No": "001-01",
+            "Description": "兲兲鸡精后端接口开发",
+            "Language": 0,
+            "EstimatedTime": 120,
+            "Project": "001"
+          },
+          {
+            "No": "001-02",
+            "Description": "兲兲鸡精前端页面开发",
+            "Language": 6,
+            "EstimatedTime": 120,
+            "Previous": "001-01",
+            "Project": "001"
+          }
+        ]
+      }
+    ],
+    "Author": "wuxx"
+  },
+  {
+    "Id": 2,
+    "Name": "企鹅养殖厂",
+    "WorkSituation": 95,
+    "TotalAsset": 545657949816573,
+    "StaffScale": 48763,
+    "ManageWay": 3,
+    "QualificationThreshold": 4,
+    "SalarySchemes": [
+      {
+        "Qualification": 4,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 16000
+      },
+      {
+        "Qualification": 5,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 18000
+      },
+      {
+        "Qualification": 6,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 21000
+      },
+      {
+        "Qualification": 7,
+        "QuarterlyBonus": 1,
+        "AnnualBonus": 3,
+        "MonthlySalary": 30000
+      }
+    ],
+    "WorkTimes": [
+      {
+        "Begin": "10:00:00",
+        "End": "12:00:00"
+      },
+      {
+        "Begin": "14:00:00",
+        "End": "18:00:00"
+      },
+      {
+        "Begin": "19:00:00",
+        "End": "22:00:00"
+      }
+    ],
+    "WeekEndMode": 0,
+    "Projects": [
+      {
+        "No": "001",
+        "Name": "A货呦西流水线",
+        "Description": "想玩什么呦西，我们都能给你A出来，还在为升级慢而烦恼嘛，在我们这，有钱你就能快速变强！",
+        "EstimatedDays": 30,
+        "Bonus": 300000,
+        "Company": 2,
+        "Tasks": [
+          {
+            "No": "001-01",
+            "Description": "草席呦西引擎",
+            "Language": 4,
+            "EstimatedTime": 120,
+            "Project": "001"
+          },
+          {
+            "No": "001-02",
+            "Description": "呦西服务端开发",
+            "Language": 4,
+            "EstimatedTime": 80,
+            "Previous": "001-01",
+            "Project": "001"
+          },
+          {
+            "No": "001-03",
+            "Description": "呦西客户端开发",
+            "Language": 0,
+            "EstimatedTime": 60,
+            "Previous": "001-02",
+            "Project": "001"
+          }
+        ]
+      }
+    ],
+    "Author": "zero"
+  }
+]
