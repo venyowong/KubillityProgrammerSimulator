@@ -29,6 +29,10 @@ namespace KubillityProgrammerSimulator.Interacts
                 new InductionInteract().Invoke();
                 return;
             }
+            if (lead.Goal < 200000)
+            {
+                new GoalInteract().Invoke();
+            }
 
             new TimePassInteract().Invoke();
         }

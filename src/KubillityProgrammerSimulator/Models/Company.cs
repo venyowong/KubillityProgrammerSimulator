@@ -244,41 +244,45 @@ namespace KubillityProgrammerSimulator.Models
 
             if (Time.Instance.WeekDay == this.LastWorkDay)
             {
-                // 每4周发一次工资，第4周的最后一个工作日结算
-                if (Time.Instance.Week % 4 == 3)
+                var endTime = this.WorkTimes.OrderBy(t => t.End).Last().End; // 下班时间点
+                if (Time.Instance.Current == endTime) // 刚下班
                 {
-                    AnsiConsole.MarkupLine($"[yellow]{this.Name}：发工资了发工资了，下个月给我好好干活...[/]");
-                    foreach (var person in this.Staffs)
+                    // 每4周发一次工资，第4周的最后一个工作日结算
+                    if (Time.Instance.Week % 4 == 0)
                     {
-                        var p = Game.Instance.GetPerson(person);
-                        p!.CumulativeSalary += p.Salary.MonthlySalary;
+                        AnsiConsole.MarkupLine($"[yellow]{this.Name}：发工资了发工资了，下个月给我好好干活...[/]");
+                        foreach (var person in this.Staffs)
+                        {
+                            var p = Game.Instance.GetPerson(person);
+                            p!.CumulativeSalary += p.Salary.MonthlySalary;
+                        }
                     }
-                }
 
-                // 每12周发一次季度奖金，第12周的最后一个工作日结算
-                if (Time.Instance.Week % 12 == 11)
-                {
-                    AnsiConsole.MarkupLine($"[yellow]{this.Name}：发季度奖了...[/]");
-                    foreach (var person in this.Staffs)
+                    // 每12周发一次季度奖金，第12周的最后一个工作日结算
+                    if (Time.Instance.Week % 12 == 0)
                     {
-                        var p = Game.Instance.GetPerson(person);
-                        p!.CumulativeSalary += p.Salary.QuarterlyBonus;
+                        AnsiConsole.MarkupLine($"[yellow]{this.Name}：发季度奖了...[/]");
+                        foreach (var person in this.Staffs)
+                        {
+                            var p = Game.Instance.GetPerson(person);
+                            p!.CumulativeSalary += p.Salary.QuarterlyBonus;
+                        }
                     }
-                }
 
-                // 每48周发一次年终奖，第48周的最后一个工作日结算
-                if (Time.Instance.Week % 48 == 47)
-                {
-                    AnsiConsole.MarkupLine($"[green]{this.Name}：来来来，发年终奖了，你们这群懒惰的土拨鼠今年干得还算可以，狠不戳...[/]");
-                    foreach (var person in this.Staffs)
+                    // 每48周发一次年终奖，第48周的最后一个工作日结算
+                    if (Time.Instance.Week % 48 == 0)
                     {
-                        var p = Game.Instance.GetPerson(person);
-                        p!.CumulativeSalary += p.Salary.AnnualBonus;
-                        p.CheckGoalAchieve();
+                        AnsiConsole.MarkupLine($"[green]{this.Name}：来来来，发年终奖了，你们这群懒惰的土拨鼠今年干得还算可以，狠不戳...[/]");
+                        foreach (var person in this.Staffs)
+                        {
+                            var p = Game.Instance.GetPerson(person);
+                            p!.CumulativeSalary += p.Salary.AnnualBonus;
+                            p.CheckGoalAchieve();
+                        }
                     }
-                }
 
-                // todo: 调薪
+                    // todo: 调薪
+                }
             }
         }
 

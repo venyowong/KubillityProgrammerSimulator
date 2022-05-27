@@ -16,12 +16,12 @@ namespace KubillityProgrammerSimulator
 
         public int Week
         {
-            get => (int)Math.Ceiling(this.Day / 7.0);
+            get => (int)Math.Ceiling(this.Day  / 7.0);
         }
 
         public int WeekDay
         {
-            get => this.Day % 7;
+            get => (this.Day - 1) % 7;
         }
 
         public TimeSpan Current { get; private set; } = new TimeSpan(0, 0, 0);

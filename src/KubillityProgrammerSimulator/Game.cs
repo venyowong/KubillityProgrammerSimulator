@@ -205,6 +205,11 @@ namespace KubillityProgrammerSimulator
 
             var random = new Random((int)DateTime.Now.Ticks);
             var plots = this.plots[key];
+            if (!plots.Any())
+            {
+                return null;
+            }
+
             return plots[random.Next(plots.Count)];
         }
     }

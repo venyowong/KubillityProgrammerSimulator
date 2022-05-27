@@ -18,22 +18,49 @@ namespace KubillityProgrammerSimulator.Interacts
         public void Invoke()
         {
             var minutes = this.prompt.Ask("打算发呆多久？以分钟为单位：");
-            minutes = Time.Instance.Pass(minutes);
+            minutes = Game.Instance.GetKeyTime(minutes);
+            var lead = Game.Instance.GetLead();
             var aside = Game.Instance.GetAside("StareBlankly");
             var flow = new MultilineTextFlow(500);
             foreach (var text in aside!.Parse())
             {
                 flow.AddText(text);
             }
+
+            var random = new Random((int)DateTime.Now.Ticks);
+            List<Influence>? influences = null;
+            if (random.NextDouble() <= 0.1 * minutes / 120) // 发呆两小时触发事件概率 10%
+            {
+                var plot = Game.Instance.GetPlot("StareBlankly");
+                if (plot != null)
+                {
+                    influences = plot.Influences;
+                    if (lead!.MatchConditions(plot.Conditions))
+                    {
+                        minutes *= 0.3 + 0.7 * random.NextDouble(); // 发呆中途发生事件
+                        minutes = Math.Floor(minutes);
+                        flow.AddText("[yellow]新事件发生...[/]");
+                        foreach (var text in plot.Content.Parse())
+                        {
+                            flow.AddText(text);
+                        }
+                    }
+                }
+            }
+
+            minutes = Time.Instance.Pass(minutes);
             flow.AddText($"[yellow]看了 {minutes} 分钟后，眼睛都酸胀了...[/]")
                 .Show();
-            var lead = Game.Instance.GetLead();
+            if (influences != null)
+            {
+                lead!.BeAffected(influences);
+            }
             lead!.WeeklyVitality += 0.2 * minutes / 60; // 发呆一小时恢复 0.2 活力
             if (lead.WeeklyVitality > 40)
             {
                 lead.WeeklyVitality = 40;
             }
-            AnsiConsole.MarkupLine($"[grey]Day {Time.Instance.Day} {Time.Instance.Current}[/]");
+            AnsiConsole.MarkupLine($"[grey]Day{Time.Instance.Day} Week{Time.Instance.Week} No.{Time.Instance.WeekDay} {Time.Instance.Current}[/]");
             Game.Instance.TimePassed();
         }
     }

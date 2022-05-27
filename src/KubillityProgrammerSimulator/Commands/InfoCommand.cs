@@ -16,7 +16,7 @@ namespace KubillityProgrammerSimulator.Commands
                 return false;
             }
 
-            AnsiConsole.MarkupLine($"[grey]Day {Time.Instance.Day} {Time.Instance.Current}[/]");
+            AnsiConsole.MarkupLine($"[grey]Day{Time.Instance.Day} Week{Time.Instance.Week} No.{Time.Instance.WeekDay} {Time.Instance.Current}[/]");
             var lead = Game.Instance.GetLead();
             if (lead != null)
             {

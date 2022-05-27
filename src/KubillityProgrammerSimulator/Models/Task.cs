@@ -65,9 +65,9 @@ namespace KubillityProgrammerSimulator.Models
             AnsiConsole.MarkupLine($"进行了 {minutes} 分钟 {this.Description}...");
             this.PassedTime += minutes / 60;
             this.Progress = this.PassedTime / 1.0 / this.EstimatedTime;
-            if (this.Progress >= 100)
+            if (this.Progress >= 1)
             {
-                this.Progress = 100;
+                this.Progress = 1;
                 var person = Game.Instance.GetPerson(this.Developer);
                 person!.RunningTasks.Remove(this.No);
                 var company = Game.Instance.GetCompany(person.Company);

@@ -51,7 +51,7 @@ namespace KubillityProgrammerSimulator.Interacts
                 }
             }
 
-            new TimePassInteract().Invoke();
+            new GoalInteract().Invoke();
         }
     }
 }

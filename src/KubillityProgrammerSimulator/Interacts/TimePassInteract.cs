@@ -11,12 +11,12 @@ namespace KubillityProgrammerSimulator.Interacts
     {
         public void Invoke()
         {
-            AnsiConsole.MarkupLine($"[grey]Day {Time.Instance.Day} {Time.Instance.Current}[/]");
+            AnsiConsole.MarkupLine($"[grey]Day{Time.Instance.Day} Week{Time.Instance.Week} No.{Time.Instance.WeekDay} {Time.Instance.Current}[/]");
             while (true)
             {
                 Game.Instance.TimePassed();
                 Time.Instance.Pass(60);
-                AnsiConsole.MarkupLine($"[grey]Day {Time.Instance.Day} {Time.Instance.Current}[/]");
+                AnsiConsole.MarkupLine($"[grey]Day{Time.Instance.Day} Week{Time.Instance.Week} No.{Time.Instance.WeekDay} {Time.Instance.Current}[/]");
             }
         }
     }

@@ -74,6 +74,11 @@ namespace KubillityProgrammerSimulator.Models
         /// </summary>
         public int? RestBeginDay { get; set; }
 
+        /// <summary>
+        /// 目标年薪
+        /// </summary>
+        public double Goal { get; set; }
+
         public void Report()
         {
             var table = new Table();
@@ -252,7 +257,7 @@ namespace KubillityProgrammerSimulator.Models
 
             var company = Game.Instance.GetCompany(this.Company);
             var endTime = company!.WorkTimes.OrderBy(t => t.End).Last().End; // 下班时间点
-            if (Time.Instance.Current == endTime) // 刚下班
+            if (Time.Instance.WeekDay <= company.LastWorkDay && Time.Instance.Current == endTime) // 刚下班
             {
                 AnsiConsole.MarkupLine($"[green]{this.Name}：下班啦，我免费了~~~[/]");
             }
@@ -272,7 +277,7 @@ namespace KubillityProgrammerSimulator.Models
         public void CheckGoalAchieve()
         {
             AnsiConsole.MarkupLine($"[yellow]{this.Name}：收入结算中...今年能通关嘛？[/]");
-            if (this.CumulativeSalary >= 500000)
+            if (this.CumulativeSalary >= this.Goal)
             {
                 new GameOverInteract(4).Invoke();
             }
@@ -347,22 +352,54 @@ namespace KubillityProgrammerSimulator.Models
                     continue;
                 }
 
+                if (!double.TryParse(influence.Value, out var num))
+                {
+                    continue;
+                }
                 switch (influence.Key)
                 {
                     case "CumulativeSalary":
-                        if (!double.TryParse(influence.Value, out var num))
-                        {
-                            continue;
-                        }
-
                         switch (influence.Type)
                         {
-                            case InfluenceType.Enhance:
-                                this.CumulativeSalary += num;
-                                break;
                             case InfluenceType.PercentageEnhance:
-                                this.CumulativeSalary *= 1 + num;
+                                num = this.CumulativeSalary * num;
                                 break;
+                        }
+                        this.CumulativeSalary += num;
+
+                        if (num > 0)
+                        {
+                            AnsiConsole.MarkupLine($"[green]{this.Name}: {num} 奖金入账~~~[/]");
+                        }
+                        else
+                        {
+                            AnsiConsole.MarkupLine($"[red]{this.Name}: 被扣了 {-num} 工资[/]");
+                        }
+                        break;
+                    case "MentalHealthy":
+                        switch (influence.Type)
+                        {
+                            case InfluenceType.PercentageEnhance:
+                                num = this.MentalHealthy * num;
+                                break;
+                        }
+                        if (this.MentalHealthy + num > 100)
+                        {
+                            num = 100 - this.MentalHealthy;
+                        }
+                        if (this.MentalHealthy + num < 0)
+                        {
+                            num = -this.MentalHealthy;
+                        }
+                        this.MentalHealthy += num;
+
+                        if (num > 0)
+                        {
+                            AnsiConsole.MarkupLine($"[green]{this.Name}: 心情愉悦，心理健康值恢复 {num}[/]");
+                        }
+                        else
+                        {
+                            AnsiConsole.MarkupLine($"[red]{this.Name}: 哦~真是糟糕透了，被这该死的土拨鼠坏了我的心情，心理健康值下降 {-num}[/]");
                         }
                         break;
                 }
